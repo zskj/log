@@ -1,0 +1,14 @@
+<div class="col-md-12">
+
+ <h2><%= @post.title %></h2>
+
+  <div class="content"><%= markdown(@post.content).html_safe %></div>
+  <hr/>
+  <div class="group">
+    <% if current_user && @post.editable_by?(current_user) %>
+      <%= link_to("编辑", edit_post_path(@post), class: "btn btn-sm btn-default")%>
+      <%= link_to("删除", post_path(@post), class: "btn btn-sm btn-default", method: :delete, data: { confirm: "确定删除" } )%>
+     <% end %>
+  </div>
+  
+</div>
